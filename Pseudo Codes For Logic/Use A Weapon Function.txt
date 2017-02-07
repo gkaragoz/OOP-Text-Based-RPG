@@ -1,0 +1,27 @@
+Use a weapon function
+1 Get the currently selected weapon from the cboWeapons ComboBox
+1 Determine the amount of damage the player does to the monster
+1 Apply the damage to the monster's CurrentHitPoints
+	2 Display message
+1 If the monster is dead (zero hit points remaining)
+	2 Display a victory message
+	2 Give player experience points for killing the monster
+		3 Display message
+	2 Give player gold for killing the monster
+		3 Display message
+	2 Get loot items from the monster
+		3 Display message for each loot item
+		3 Add item to player's inventory
+	2 Refresh player data on UI
+		3 Gold and ExperiencePoints
+		3 Inventory list and ComboBoxes
+	2 Move player to current location
+		3 This will heal the player and create a new monster
+1 If the monster is still alive
+	2 Determine the amount of damage the monster does to the player
+	2 Display message
+	2 Subtract damage from player's CurrentHitPoints
+		3 Refresh player data in UI
+	2 If player is dead (zero hit points remaining)
+		3 Display message
+		3 Move player to Home location
