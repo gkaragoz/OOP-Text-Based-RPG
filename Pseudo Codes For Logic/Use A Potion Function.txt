@@ -1,0 +1,15 @@
+Use a potion function
+1 Get currently selected potion from cboPotions ComboBox
+1 Add healing amount to player's CurrentHitPoints
+	2 CurrentHitPoints cannot exceed player's MaximumHitPoints
+1 Remove the potion from the player's inventory
+1 Display message
+1 Monster gets their turn to attack
+	2 Determine the amount of damage the monster does to the player
+	2 Display message
+	2 Subtract damage from player's CurrentHitPoints
+		3 Refresh player data in UI
+	2 If player is dead (zero hit points remaining)
+		3 Display message
+		3 Move player to Home location
+1 Refresh player data in UI
