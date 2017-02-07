@@ -1,0 +1,35 @@
+Here is an outline of the logic for a player move function as pseudo-code.
+
+1 If the location has an item required to enter it
+	2 If the player does not have the item
+		3 Display message
+		3 Don't let the player move here (stop processing the move)
+1 Update the player's current location
+	2 Display location name and description
+	2 Show/hide the available movement buttons
+1 Completely heal the player (we assume they rested/healed while moving)
+	2 Update hit points display in UI
+1 Does the location have a quest?
+	2 If so, does the player already have the quest?
+		3 If so, is the quest already completed?
+			4 If not, does the player have the items to complete the quest?
+				5 If so, complete the quest
+					6 Display messages
+					6 Remove quest completion items from inventory
+					6 Give quest rewards
+					6 Mark player's quest as completed
+		3 If not, give the player the quest
+			4 Display message
+			4 Add quest to player quest list
+1 Is there a monster at the location?
+	2 If so,
+		3 Display message
+		3 Spawn new monster to fight
+		3 Display combat comboboxes and buttons
+			4 Repopulate comboboxes, in case inventory changed
+	2 If not
+		3 Hide combat comboboxes and buttons
+1 Refresh the player's inventory in the UI – in case it changed
+1 Refresh the player's quest list in the UI – in case it changed
+1 Refresh the cboWeapons ComboBox in the UI
+1 Refresh the cboPotions ComboBox in the UI
