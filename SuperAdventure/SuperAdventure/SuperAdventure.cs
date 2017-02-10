@@ -31,6 +31,12 @@ namespace SuperAdventure
             lblLevel.Text = _player.Level.ToString();
         }
 
+        private void ScrollToBottomOfMessages()
+        {
+            rtbMessages.SelectionStart = rtbMessages.Text.Length;
+            rtbMessages.ScrollToCaret();
+        }
+
         private void btnUseWeapon_Click(object sender, EventArgs e)
         {
             //Get the currently selected weapon from the cboWeapons ComboBox
@@ -148,6 +154,8 @@ namespace SuperAdventure
                     MoveTo(World.LocationByID(World.LOCATION_ID_HOME));
                 }
             }
+
+            ScrollToBottomOfMessages();
         }
 
         private void btnUsePotion_Click(object sender, EventArgs e)
@@ -202,6 +210,8 @@ namespace SuperAdventure
             lblHitPoints.Text = _player.CurrentHitPoints.ToString();
             UpdateInventoryListInUI();
             UpdatePotionListInUI();
+
+            ScrollToBottomOfMessages();
         }
 
         private void btnNorth_Click(object sender, EventArgs e)
@@ -226,10 +236,6 @@ namespace SuperAdventure
 
         private void MoveTo(Location newLocation)
         {
-            ////////////////////////////////////////////////////////
-            ///////////WE WILL SEPERATE THEM TO METHODS/////////////
-            ////////////////////////////////////////////////////////
-
             // Does the location have any required items
             if (!_player.HasRequiredItemToEnterThisLocation(newLocation))
             {
@@ -370,6 +376,8 @@ namespace SuperAdventure
             UpdateWeaponListInUI();
             // Refresh player's potions combobox
             UpdatePotionListInUI();
+
+            ScrollToBottomOfMessages();
         }
 
         private void UpdateInventoryListInUI()
