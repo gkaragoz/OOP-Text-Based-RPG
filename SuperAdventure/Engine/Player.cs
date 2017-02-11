@@ -20,6 +20,7 @@ namespace Engine
         public List<InventoryItem> Inventory { get; set; }
         public List<PlayerQuest> Quests { get; set; }
         public Location CurrentLocation { get; set; }
+        public Weapon CurrentWeapon { get; set; }
 
         private Player(int currentHitPoints, int maximumHitPoints,
             int gold, int experiencePoints) : 
@@ -66,8 +67,15 @@ namespace Engine
                 playerData.SelectSingleNode("/Player/Stats/CurrentLocation").InnerText);
                 player.CurrentLocation = World.LocationByID(currentLocationID);
 
-                foreach (XmlNode node in playerData.SelectNodes(
-                 "/Player/InventoryItems/InventoryItem"))
+                if (playerData.SelectSingleNode("/Player/Stats/CurrentWeapon") != null)
+                {
+                    int currentWeaponID = Convert.ToInt32(
+                    playerData.SelectSingleNode(
+                    "/Player/Stats/CurrentWeapon").InnerText);
+                    player.CurrentWeapon = (Weapon)World.ItemByID(currentWeaponID);
+                }
+
+                foreach (XmlNode node in playerData.SelectNodes("/Player/InventoryItems/InventoryItem"))
                 {
                     int id = Convert.ToInt32(node.Attributes["ID"].Value);
                     int quantity = Convert.ToInt32(node.Attributes["Quantity"].Value);
@@ -96,7 +104,7 @@ namespace Engine
             }
         }
 
-public bool HasRequiredItemToEnterThisLocation(Location location)
+        public bool HasRequiredItemToEnterThisLocation(Location location)
         {
             if (location.ItemRequiredToEnter == null)
             {
@@ -213,6 +221,15 @@ public bool HasRequiredItemToEnterThisLocation(Location location)
             currentLocation.AppendChild(playerData.CreateTextNode(
             this.CurrentLocation.ID.ToString()));
             stats.AppendChild(currentLocation);
+
+            if (CurrentWeapon != null)
+            {
+                XmlNode currentWeapon =
+                playerData.CreateElement("CurrentWeapon");
+                currentWeapon.AppendChild(
+                playerData.CreateTextNode(this.CurrentWeapon.ID.ToString()));
+                stats.AppendChild(currentWeapon);
+            }
 
             // Create the "InventoryItems" child node to hold each InventoryItem node
             XmlNode inventoryItems = playerData.CreateElement("InventoryItems");
