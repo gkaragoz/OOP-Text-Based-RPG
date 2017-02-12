@@ -31,8 +31,12 @@ namespace SuperAdventure
             {
                 _player = Player.CreateDefaultPlayer();
             }
+
+            lblHitPoints.DataBindings.Add("Text", _player, "CurrentHitPoints");
+            lblGold.DataBindings.Add("Text", _player, "Gold");
+            lblExperience.DataBindings.Add("Text", _player, "ExperiencePoints");
+            lblLevel.DataBindings.Add("Text", _player, "Level");
             MoveTo(_player.CurrentLocation);
-            UpdatePlayerStats();
         }
 
         private void ScrollToBottomOfMessages()
@@ -116,7 +120,6 @@ namespace SuperAdventure
                     }
                 }
 
-                UpdatePlayerStats();
                 UpdateInventoryListInUI();
                 UpdateWeaponListInUI();
                 UpdatePotionListInUI();
@@ -140,10 +143,7 @@ namespace SuperAdventure
 
                 //Subtract damage from player
                 _player.CurrentHitPoints -= damageToPlayer;
-
-                //Refresh player data in UI
-                lblHitPoints.Text = _player.CurrentHitPoints.ToString();
-
+            
                 if (_player.CurrentHitPoints <= 0)
                 {
                     //Display message
@@ -206,7 +206,6 @@ namespace SuperAdventure
             }
 
             //Refresh player data in UI
-            lblHitPoints.Text = _player.CurrentHitPoints.ToString();
             UpdateInventoryListInUI();
             UpdatePotionListInUI();
 
@@ -259,10 +258,7 @@ namespace SuperAdventure
 
             //Completely heal the player
             _player.CurrentHitPoints = _player.MaximumHitPoints;
-
-            //Update hit points in UI
-            lblHitPoints.Text = _player.CurrentHitPoints.ToString();
-
+            
             //Does the location have a quest?
             if (newLocation.QuestAvailableHere != null)
             {
@@ -478,13 +474,6 @@ namespace SuperAdventure
                 cboPotions.ValueMember = "ID";
                 cboPotions.SelectedIndex = 0;
             }
-        }        private void UpdatePlayerStats()
-        {
-            // Refresh player information and inventory controls
-            lblHitPoints.Text = _player.CurrentHitPoints.ToString();
-            lblGold.Text = _player.Gold.ToString();
-            lblExperience.Text = _player.ExperiencePoints.ToString();
-            lblLevel.Text = _player.Level.ToString();
         }
 
         private void SuperAdventure_FormClosing(object sender, FormClosingEventArgs e)
