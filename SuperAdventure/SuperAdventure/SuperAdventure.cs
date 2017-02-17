@@ -160,6 +160,11 @@ namespace SuperAdventure
             }
         }
 
+        private void btnTrade_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnNorth_Click(object sender, EventArgs e)
         {
             _player.MoveNorth();
