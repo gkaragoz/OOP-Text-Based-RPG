@@ -15,6 +15,7 @@ namespace Engine
         public Item ItemRequiredToEnter { get; set; }
         public Quest QuestAvailableHere { get; set; }
         public Monster MonsterLivingHere { get; set; }
+        public Vendor VendorWorkingHere { get; set; }
         public Location LocationToNorth { get; set; }
         public Location LocationToEast { get; set; }
         public Location LocationToSouth { get; set; }

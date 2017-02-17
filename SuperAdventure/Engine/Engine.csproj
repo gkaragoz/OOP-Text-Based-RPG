@@ -54,6 +54,7 @@
     <Compile Include="Quest.cs" />
     <Compile Include="QuestCompletionItem.cs" />
     <Compile Include="RandomNumberGenerator.cs" />
+    <Compile Include="Vendor.cs" />
     <Compile Include="Weapon.cs" />
     <Compile Include="World.cs" />
   </ItemGroup>
