@@ -1,0 +1,8 @@
+Features for adding a vendor
+
+Here are the changes we need to make:
+1. Add a price to items
+2. Create a new Vendor class. This class will have properties for the vendor's name and
+their inventory.
+3. Change the Location class, to hold an (optional) Vendor at that location
+4. Change the UI to let the player buy and sell items with the vendor
