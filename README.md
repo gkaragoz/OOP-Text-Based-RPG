@@ -67,3 +67,5 @@ in the UI
 
 #### What will the game look like?
 ![alt tag](https://s30.postimg.org/um0v4fkn5/Game_screenshot.png)
+
+![alt tag](https://s15.postimg.org/ggzlsk8vf/Trader.png)
