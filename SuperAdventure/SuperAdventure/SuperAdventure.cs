@@ -133,6 +133,8 @@ namespace SuperAdventure
 
             if (propertyChangedEventArgs.PropertyName == "CurrentLocation")
             {
+                btnTrade.Visible = (_player.CurrentLocation.VendorWorkingHere != null);
+
                 // Show/hide available movement buttons
                 btnNorth.Visible = (_player.CurrentLocation.LocationToNorth != null);
                 btnEast.Visible = (_player.CurrentLocation.LocationToEast != null);
@@ -162,7 +164,9 @@ namespace SuperAdventure
 
         private void btnTrade_Click(object sender, EventArgs e)
         {
-
+            TradingScreen tradingScreen = new TradingScreen(_player);
+            tradingScreen.StartPosition = FormStartPosition.CenterParent;
+            tradingScreen.ShowDialog(this);
         }
 
         private void btnNorth_Click(object sender, EventArgs e)
