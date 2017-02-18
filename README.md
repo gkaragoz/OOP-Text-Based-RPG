@@ -1,3 +1,6 @@
+### Notice
+Development has ended!
+
 #### OOP-Text-Based-RPG
 I just create this repository because I just want to make practice of my OOP (Object-Oriented-Programming) skills. With that project, I'm going to make a native super simple RPG Text Based game using C# on Windows Form Application.
 
